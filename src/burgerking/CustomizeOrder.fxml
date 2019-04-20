@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -77,17 +78,20 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="pane" stylesheets="@MainTheme.css">
                      <children>
-                        <JFXRadioButton id="size-radio-button" fx:id="rbMedium" layoutX="24.0" layoutY="82.0" onAction="#setFries" prefHeight="21.0" prefWidth="93.0" selected="true" style="-fx-dot-color: #ffffff; -jfx-selected-color: #ffffff; -jfx-unselected-color: #ffffff;" text="Medium" textFill="WHITE">
+                        <JFXRadioButton id="size-radio-button" fx:id="rbMedium" layoutX="24.0" layoutY="82.0" onAction="#setFries" prefHeight="21.0" prefWidth="93.0" style="-fx-dot-color: #ffffff; -jfx-selected-color: #ffffff; -jfx-unselected-color: #ffffff;" text="Medium" textFill="WHITE">
+                           <font>
+                              <Font name="Calibri Bold" size="17.0" />
+                           </font>
+                           <toggleGroup>
+                              <ToggleGroup fx:id="fries" />
+                           </toggleGroup>
+                        </JFXRadioButton>
+                        <JFXRadioButton fx:id="rbRegular" layoutX="24.0" layoutY="29.0" onAction="#setFries" prefWidth="93.0" style="-fx-dot-color: #ffffff; -jfx-selected-color: #ffffff; -jfx-unselected-color: #ffffff;" text="Regular" textFill="WHITE" toggleGroup="$fries">
                            <font>
                               <Font name="Calibri Bold" size="17.0" />
                            </font>
                         </JFXRadioButton>
-                        <JFXRadioButton fx:id="rbRegular" layoutX="24.0" layoutY="29.0" onAction="#setFries" prefWidth="93.0" style="-fx-dot-color: #ffffff; -jfx-selected-color: #ffffff; -jfx-unselected-color: #ffffff;" text="Regular" textFill="WHITE">
-                           <font>
-                              <Font name="Calibri Bold" size="17.0" />
-                           </font>
-                        </JFXRadioButton>
-                        <JFXRadioButton fx:id="rbLarge" layoutX="24.0" layoutY="138.0" onAction="#setFries" style="-fx-dot-color: #ffffff; -jfx-selected-color: #ffffff; -jfx-unselected-color: #ffffff;" text="Large" textFill="WHITE">
+                        <JFXRadioButton fx:id="rbLarge" layoutX="24.0" layoutY="138.0" onAction="#setFries" style="-fx-dot-color: #ffffff; -jfx-selected-color: #ffffff; -jfx-unselected-color: #ffffff;" text="Large" textFill="WHITE" toggleGroup="$fries">
                            <font>
                               <Font name="Calibri Bold" size="17.0" />
                            </font>

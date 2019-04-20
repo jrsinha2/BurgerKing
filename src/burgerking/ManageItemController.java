@@ -100,15 +100,17 @@ public class ManageItemController implements Initializable {
             String ICode = txtItemCode.getText();
             String IDes = txtItemDesc.getText();
             
-            String sql = "SELECT * FROM item WHERE ItemDes LIKE ? or ItemID = ?";
+            //String sql = "SELECT * FROM item WHERE ItemDes LIKE ? or ItemID = ?";
+            String sql = "SELECT * FROM item WHERE ItemID = ?";
             Connection conn = ConnectionUtil.conDB();
             PreparedStatement pst = null;
             ResultSet rs = null;
             pst = conn.prepareStatement(sql);
-            pst.setString(1,"%"+IDes+"%");
-            pst.setString(2,ICode);
+            //pst.setString(1,"%"+IDes+"%");
+            //pst.setString(2,ICode);
+            pst.setString(1,ICode);
             rs = pst.executeQuery();
-            ObservableList<ItemTable> dynamicList = FXCollections.observableArrayList();
+            /*ObservableList<ItemTable> dynamicList = FXCollections.observableArrayList();
             
             tblCode.setCellValueFactory(new PropertyValueFactory<>("ItemCode"));
             tblDescription.setCellValueFactory(new PropertyValueFactory<>("ItemDescription"));
@@ -123,7 +125,13 @@ public class ManageItemController implements Initializable {
                 
                 dynamicList.add(i);
             }
-            
+            */
+            if(rs.next()) {
+                txtItemCode.setText(rs.getString(1));
+                txtItemDesc.setText(rs.getString(2));
+                txtPrice.setText(rs.getString(3));
+                txtImage.setText(rs.getString(5));
+            }
         } catch (SQLException ex) {
             Logger.getLogger(ManageItemController.class.getName()).log(Level.SEVERE, null, ex);
         }

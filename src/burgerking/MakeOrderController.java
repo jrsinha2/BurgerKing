@@ -124,6 +124,7 @@ public class MakeOrderController implements Initializable{
     @FXML
     private Text lbl_total;
     private double totalAmount = 0;
+    
     @FXML
     private JFXButton btnSearchtem;
     
@@ -234,7 +235,18 @@ public class MakeOrderController implements Initializable{
 
     @FXML
     void btnPayment(ActionEvent event) {
-
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Payment.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            PaymentController cont = loader.getController();
+            cont.setTxt(txtOID.getText(),Double.parseDouble(lbl_total.getText()),txtCID.getText(),txtOrderDate.getValue(),orderDetailList );
+            cont.setSubTotal(lbl_total.getText());
+        } catch (IOException ex) {
+            Logger.getLogger(MakeOrderController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
     }
 
     @FXML
@@ -257,6 +269,7 @@ public class MakeOrderController implements Initializable{
     @FXML
     void customizeOrder(ActionEvent event) {
         try {
+            
             FXMLLoader loader = new FXMLLoader(getClass().getResource("CustomizeOrder.fxml"));
             Parent root = loader.load();
             Stage stage = new Stage();
@@ -360,9 +373,16 @@ public class MakeOrderController implements Initializable{
 
     @FXML
     private void SearchItem(ActionEvent event) {
+        String icode = txtItemCode.getText();
+        Item i = Item.searchDB(icode);
+        txtItemCode.setText(icode);
+        txtItemDesc.setText(i.getDescription());
+        txtPrice.setText(String.valueOf(i.getPrice()));
         
     
     }
-
+    public void setCustomizedAmnt(String amt) {
+        lbl_amt.setText(amt);
+    } 
     
 }
