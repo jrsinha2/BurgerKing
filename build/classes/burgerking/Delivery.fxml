@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="burgerking.DeliveryController">
+   <children>
+      <AnchorPane layoutX="20.0" layoutY="341.0" prefHeight="79.0" prefWidth="580.0" styleClass="pane" stylesheets="@MainTheme.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <JFXButton fx:id="btnMainMenu1" buttonType="RAISED" layoutX="434.0" layoutY="27.0" prefHeight="38.0" prefWidth="112.0" styleClass="btn-cancel" stylesheets="@MainTheme.css" text="Cancel" textFill="WHITE">
+               <font>
+                  <Font name="Calibri Bold" size="17.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="btnSave" buttonType="RAISED" layoutX="310.0" layoutY="27.0" onAction="#addDeliveryOrder" prefHeight="38.0" prefWidth="112.0" styleClass="btn-opp" text="Save">
+               <font>
+                  <Font name="Calibri Bold" size="16.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+      <Label fx:id="lbl_payment" layoutX="243.0" layoutY="14.0" stylesheets="@MainTheme.css" text="DELIVERY">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutY="73.0" prefHeight="99.0" prefWidth="600.0" styleClass="pane" stylesheets="@MainTheme.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <JFXTextField fx:id="txt_paymentno" layoutX="29.0" layoutY="37.0" promptText="Payment No." />
+            <JFXTextField fx:id="txt_subtotal" layoutX="214.0" layoutY="37.0" promptText="Sub Total" />
+            <JFXComboBox fx:id="cbx_deliverers" layoutX="392.0" layoutY="37.0" prefHeight="25.0" prefWidth="115.0" promptText="Deliverer" />
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </AnchorPane>
+      <AnchorPane layoutY="190.0" prefHeight="99.0" prefWidth="600.0" styleClass="pane" stylesheets="@MainTheme.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Label fx:id="lbl_cash" layoutX="274.0" layoutY="35.0" prefHeight="30.0" prefWidth="90.0" styleClass="btn-opp" stylesheets="@MainTheme.css" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </AnchorPane>
+   </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</AnchorPane>

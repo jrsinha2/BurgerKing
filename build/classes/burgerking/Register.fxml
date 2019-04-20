@@ -12,7 +12,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="burgerking.RegisterController">
    <children>
       <ImageView fx:id="wallpaper" fitHeight="600.0" fitWidth="454.0" layoutX="14.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="54.67999267578125" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="55.0">
@@ -29,7 +28,7 @@
          </effect>
       </ImageView>
       <Label fx:id="lbl" layoutX="514.0" layoutY="554.0" text="Already Registered?" />
-      <AnchorPane fx:id="loginpane" layoutX="496.0" layoutY="218.0" prefHeight="310.0" prefWidth="247.0" style="-fx-background-color: #4286f4;" AnchorPane.leftAnchor="496.0" AnchorPane.topAnchor="208.0">
+      <AnchorPane fx:id="loginpane" layoutX="496.0" layoutY="218.0" prefHeight="310.0" prefWidth="247.0" styleClass="pane" stylesheets="@MainTheme.css" AnchorPane.leftAnchor="496.0" AnchorPane.topAnchor="208.0">
          <children>
             <ImageView fx:id="username_icon" fitHeight="25.0" fitWidth="25.0" layoutX="184.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -41,7 +40,7 @@
                   <Image url="@../images/Lock_50px.png" />
                </image>
             </ImageView>
-            <JFXButton fx:id="btn_register" buttonType="RAISED" layoutX="71.0" layoutY="255.0" onAction="#btnRegister" prefHeight="25.0" prefWidth="106.0" style="-fx-background-color: #ffffff;" text="Register" textFill="#1473e6">
+            <JFXButton fx:id="btn_register" buttonType="RAISED" layoutX="71.0" layoutY="255.0" onAction="#btnRegister" prefHeight="25.0" prefWidth="106.0" styleClass="btn-opp" stylesheets="@MainTheme.css" text="Register">
                <font>
                   <Font size="14.0" />
                </font>
@@ -65,7 +64,7 @@
             <DropShadow />
          </effect>
       </AnchorPane>
-      <JFXButton fx:id="btn_login" buttonType="RAISED" layoutX="635.0" layoutY="547.0" onAction="#btnLogin" prefHeight="25.0" prefWidth="106.0" style="-fx-background-color: #1473e6;" text="Login" textFill="WHITE">
+      <JFXButton fx:id="btn_login" buttonType="RAISED" layoutX="635.0" layoutY="547.0" onAction="#btnLogin" prefHeight="25.0" prefWidth="106.0" styleClass="btn" stylesheets="@MainTheme.css" text="Login">
          <font>
             <Font size="14.0" />
          </font>

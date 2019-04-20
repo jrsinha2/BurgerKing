@@ -1,0 +1,36 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 19, 2019, 1:54:46 PM
+    Author     : Aditya Sinha
+*/
+
+.pane {
+    -fx-background-color: #ffbd0a;
+}
+
+.btn {
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #ffbd0a;
+}
+
+.btn-light {
+    -fx-background-color: #f4e109;
+    -fx-text-fill: #ffffff;
+}
+.btn-opp {
+    -fx-text-fill: #ffbd0a;
+    -fx-background-color: #ffffff;
+}
+
+.label {
+    -fx-text-fill: #ffbd0a;
+}
+
+.btn-cancel {
+    -fx-background-color:  #f22613;
+    -fx-text-fill: #ffffff;
+}
