@@ -18,17 +18,15 @@ public class MainMenuAdminController implements Initializable{
     @FXML
     private AnchorPane rootMainMenu;
 
-    @FXML
-    private JFXButton btn_Customer;
 
     @FXML
     private JFXButton btn_Item;
 
-    @FXML
-    private JFXButton btn_Summary;
 
     @FXML
     private JFXButton btn_LogOut;
+    @FXML
+    private JFXButton btn_users;
 
     @FXML
     void btnLogOut(ActionEvent event) {
@@ -44,16 +42,6 @@ public class MainMenuAdminController implements Initializable{
     }
 
 
-    @FXML
-    void btnSummary(ActionEvent event) {
-        
-    }
-
-    @FXML
-    private void manageCustomer(ActionEvent event) {
-        
-        
-    }
 
     @FXML
     private void manageItem(ActionEvent event) {
@@ -72,6 +60,10 @@ public class MainMenuAdminController implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
         
         
+    }
+
+    @FXML
+    private void manageUsers(ActionEvent event) {
     }
 
 }

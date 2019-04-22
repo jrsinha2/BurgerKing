@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import utils.ConnectionUtil;
@@ -34,6 +35,8 @@ public class Customer {
         Connection conn = ConnectionUtil.conDB();
         PreparedStatement pst = null;
         String insertSql = "INSERT into customer VALUES(?,?,?,?)";
+       if(c.id.equals(""))
+           return false;
         try {
             pst = conn.prepareStatement(insertSql);
             pst.setString(1,c.id);
@@ -87,5 +90,28 @@ public class Customer {
     public String getContact() {
         return this.contactno;
     }
-
+    
+    public static ArrayList<Customer> getCustomers() {
+        Connection conn = ConnectionUtil.conDB();
+        PreparedStatement pst = null;
+        Customer i = null;
+        String searchSql = "SELECT * FROM customer";
+        ArrayList<Customer> list = new ArrayList<>();
+        ResultSet rs = null;
+        try {
+            
+            
+            pst = conn.prepareStatement(searchSql);
+            
+            rs = pst.executeQuery();
+            while(rs.next()) {
+               i = new Customer(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4));
+               list.add(i);
+            }
+            return list;
+        } catch (SQLException ex) {
+            return list;
+        }
+        
+    }
 }

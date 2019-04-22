@@ -208,7 +208,20 @@ public class MakeOrderController implements Initializable{
 
     @FXML
     void btnDelivery(ActionEvent event) {
-
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Delivery.fxml"));
+            Node source = (Node)event.getSource();
+            Stage stage = (Stage) source.getScene().getWindow();
+            stage.close();
+            stage = new Stage();
+            Parent root = loader.load();
+            stage.setScene(new Scene(root));
+            DeliveryController cont = loader.getController();
+            cont.setTxt(txtOID.getText(),Double.parseDouble(lbl_total.getText()),txtCID.getText(),txtOrderDate.getValue(),orderDetailList );
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(MakeOrderController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML
@@ -237,12 +250,16 @@ public class MakeOrderController implements Initializable{
     void btnPayment(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Payment.fxml"));
+            Node source = (Node)event.getSource();
+            Stage stage = (Stage) source.getScene().getWindow();
+            stage.close();
+            stage = new Stage();
             Parent root = loader.load();
-            Stage stage = new Stage();
             stage.setScene(new Scene(root));
             PaymentController cont = loader.getController();
             cont.setTxt(txtOID.getText(),Double.parseDouble(lbl_total.getText()),txtCID.getText(),txtOrderDate.getValue(),orderDetailList );
             cont.setSubTotal(lbl_total.getText());
+            stage.show();
         } catch (IOException ex) {
             Logger.getLogger(MakeOrderController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -324,7 +341,7 @@ public class MakeOrderController implements Initializable{
         ResultSet rs = null;
         String nID;
         String oID = null;
-        String sqlSearch = "SELECT CustID FROM orders ORDER BY CustID DESC LIMIT 1";
+        String sqlSearch = "SELECT OrderID FROM orders ORDER BY OrderID DESC LIMIT 1";
         try {
             pst = conn.prepareStatement(sqlSearch);
             rs = pst.executeQuery();
@@ -384,5 +401,8 @@ public class MakeOrderController implements Initializable{
     public void setCustomizedAmnt(String amt) {
         lbl_amt.setText(amt);
     } 
+
+    
+    
     
 }

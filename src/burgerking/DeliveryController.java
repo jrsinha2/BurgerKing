@@ -1,6 +1,7 @@
 package burgerking;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
@@ -25,7 +26,7 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import utils.ConnectionUtil;
 
-public class PaymentController implements Initializable{
+public class DeliveryController implements Initializable{
 
     @FXML
     private JFXButton btnMainMenu1;
@@ -42,14 +43,12 @@ public class PaymentController implements Initializable{
     @FXML
     private JFXTextField txt_subtotal;
 
-    
+    @FXML
+    private JFXComboBox<String> cbx_deliverers;
 
     @FXML
-    private JFXTextField txt_cash;
+    private Label lbl_cash;
 
-    @FXML
-    private Label lbl_balance;
-    
     private double subtotal;
     private String OrderID;
     private String CustID;
@@ -58,15 +57,12 @@ public class PaymentController implements Initializable{
     private String OrderStatus;
     
     @FXML
-    void saveOrder(ActionEvent event) {
+    void addDeliveryOrder(ActionEvent event) {
         Order o = new Order(OrderID,CustID,OrderDate,OrderStatus,orderlist);
         Payment p = new Payment(txt_paymentno.getText(),OrderID,Double.parseDouble(txt_subtotal.getText()));
-        boolean ordersuccess = Order.addDB(o);
-        boolean paymentsuccess = Payment.addDB(p);
-        System.out.println(ordersuccess+" " + paymentsuccess);
-        if(ordersuccess && paymentsuccess) {
-                
-                Alert alert=new Alert(Alert.AlertType.INFORMATION);
+        
+        if(Order.addDB(o) && Payment.addDB(p)) {
+            Alert alert=new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Order Saved!");
                 alert.setHeaderText("Order added successfully");
                 alert.setContentText("Order Details saved!");
@@ -74,6 +70,7 @@ public class PaymentController implements Initializable{
                 alert.showAndWait();
                 System.out.println("Order added");
                 try{
+                    
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("MakeOrder.fxml"));
                     Node source = (Node)event.getSource();
                     Stage stage = (Stage) source.getScene().getWindow();
@@ -95,21 +92,17 @@ public class PaymentController implements Initializable{
 
                 alert.showAndWait();
                 System.out.println("Wrong details");
+    
         }
-    }
-
-    @FXML
-    void setBalance(ActionEvent event) {
-        double cash = Double.parseDouble(txt_cash.getText());
-        double balance = subtotal - cash;
-        lbl_balance.setText(String.valueOf(balance));
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        setPaymentID();
-        OrderStatus  = "PAID";
+        cbx_deliverers.getItems().addAll("Siddhant","Adit","Swaraj","Akshay","Aditya");
+        OrderStatus = "NOT PAID";
+        setPaymentID();        
     }
+    
     private void setPaymentID() {
         Connection conn = ConnectionUtil.conDB();
         PreparedStatement pst = null;
@@ -152,17 +145,13 @@ public class PaymentController implements Initializable{
         }
         txt_paymentno.setText(nID);
     }
-    
-    public void setSubTotal(String Total) {
-        this.subtotal = Double.parseDouble(Total);
-        txt_subtotal.setText(Total);
-    }
     void setTxt(String OID, double price,String CID,LocalDate date,ArrayList<OrderDetails> list) {
         this.OrderID = OID;
         this.CustID = CID;
         this.subtotal = price;
         this.OrderDate = date;
         this.orderlist = list;
-        
+        txt_subtotal.setText(String.valueOf(price));
     }
+
 }

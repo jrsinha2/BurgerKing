@@ -20,7 +20,7 @@ public class BurgerKing extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
-        stage.setTitle("BURGER KING INDIA");
+        stage.setTitle("Burger King India");
         Scene scene = new Scene(root);
         
         stage.setScene(scene);

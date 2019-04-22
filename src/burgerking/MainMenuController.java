@@ -21,11 +21,11 @@ public class MainMenuController implements Initializable{
     @FXML
     private JFXButton btn_MakeOrder;
     @FXML
-    private JFXButton btn_PendingOrders;
-    @FXML
     private AnchorPane rootMainMenu;
     @FXML
     private JFXButton btnAllOrders;
+    @FXML
+    private JFXButton btn_Customer;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -53,14 +53,29 @@ public class MainMenuController implements Initializable{
         }
     }
 
-    @FXML
     void btnPendingOrders(ActionEvent event) {
         
     }
 
     @FXML
     void setBtnViewAllOrders(ActionEvent event) {
+        try {
+            AnchorPane makeOrder  = FXMLLoader.load(getClass().getResource("ViewAllOrders.fxml"));
+            rootMainMenu.getChildren().setAll(makeOrder);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
 
+    @FXML
+    private void manageCustomer(ActionEvent event) {
+        try {
+            AnchorPane makeOrder  = FXMLLoader.load(getClass().getResource("ManageCustomers.fxml"));
+            rootMainMenu.getChildren().setAll(makeOrder);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    
     }
 
     
